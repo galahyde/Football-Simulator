@@ -125,4 +125,4 @@ class Match:
 
     def showEvent(self,e):
       print(str(e.minute)+"'", e.side.team_name,e.event,e.player.stats['short_name'])
-      
+      print(f"{self.stats[self.home_side]['Goal']} - {self.stats[self.away_side]['Goal']}")
