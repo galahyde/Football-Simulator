@@ -72,6 +72,12 @@ class League:
     def simMatch(self,home_team_name,away_team_name):
         home_team=self.teams[home_team_name]
         away_team=self.teams[away_team_name]
+        home_team.playSquad()
+        home_team.showStats()
+        print(f"\n")
+        away_team.playSquad()
+        away_team.showStats()
+        #input()
         match=m.Match(home_team,away_team)
         match.showResult()
         self.updateTable(match)
