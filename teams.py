@@ -109,6 +109,44 @@ class Team:
         squad.update({'attackers':list(squad_attackers.values()),'midfielders':list(squad_midfielders.values()),'defenders':list(squad_defenders.values()),'goalkeeper':list(squad_gk.values())})
         self.squad=squad
 
+    def playSquad(self):
+        squad={}
+        squad_attackers={}
+        squad_midfielders={}
+        squad_defenders={}
+        squad_gk={}
+        
+        goalkeepers=list(self.goalkeepers.values())
+        goalkeepers.sort(key = lambda x:x.stats['overall'],reverse=True)
+        goalkeepers[0].stats['team_position']='Starter'
+        squad_gk[goalkeepers[0].stats['long_name']]=goalkeepers[0]
+        print(goalkeepers[0].stats['short_name'])
+        
+        defenders=list(self.defenders.values())
+        defenders.sort(key = lambda x:x.stats['overall'],reverse=True)
+        for player in defenders[0:self.manager.defenders]:
+            player.stats['team_position']='Starter'
+            squad_defenders[player.stats['long_name']]=player
+            print(player.stats['short_name'])
+           
+        midfielders=list(self.midfielders.values())
+        midfielders.sort(key = lambda x:x.stats['overall'],reverse=True)
+        for player in midfielders[0:self.manager.midfielders]:
+            player.stats['team_position']='Starter'
+            squad_midfielders[player.stats['long_name']]=player
+            print(player.stats['short_name'])
+           
+        attackers=list(self.attackers.values())
+        attackers.sort(key = lambda x:x.stats['overall'],reverse=True)
+        for player in attackers[0:self.manager.strikers]:
+            player.stats['team_position']='Starter'
+            squad_attackers[player.stats['long_name']]=player
+            print(player.stats['short_name'])
+        print(f"\n")
+        
+        squad.update({'attackers':list(squad_attackers.values()),'midfielders':list(squad_midfielders.values()),'defenders':list(squad_defenders.values()),'goalkeeper':list(squad_gk.values())})
+        self.squad=squad
+        
     def Substitutes(self):
         subs=[x for x in self.players.keys() if x not in self.squad.keys()]
         subs.sort(key = lambda x:self.players[x].stats['overall'],reverse=True)
