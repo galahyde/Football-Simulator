@@ -5,17 +5,22 @@ import leagues as l
 import match as m
 
 
-print('Welcome to my League Simulator\n You can use my project to simulate Football Leagues across the world\n Please enter the league you would like to simulate-')
+print('binvinida tola Pank League Simulator\n dale enter pra tacale play')
 n=0
-while n not in ['1','2','3','4','5']:    
-    print("""
-    1 - La Liga Santander
-    2 - Premier League
-    3 - Bundesliga
-    4 - Seria A
-    5 - Ligue 1""")
-    n=input()
-    if n not in ['1','2','3','4','5']:
-        print('Enter a Valid input')
-pl=l.League(int(n))
-pl.simLeague()
+input('pley')
+pl=l.League(int(2))
+pl.showStandings()
+input('dale')
+rodada=0
+while rodada<30:
+    for h,a in pl.schedule[pl.week]:
+            #if h or a == 
+            #pl.showTeam()
+            #print(h.squad, a.squad)
+            pl.simMatch(h,a)
+            pl.showStandings()
+            #input('proximo')
+    pl.showStandings()
+    rodada+=1
+    pl.week+=1
+    #input('prox rodada')
